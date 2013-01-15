@@ -124,6 +124,11 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 					json.put("identifier", doc.get("lom.general.identifier.entry"));
 				else
 					json.put("identifier", new String(""));
+                                
+                                if (doc.get("lom.general.identifier.catalog") != null)
+					json.put("idCatalog", doc.get("lom.general.identifier.catalog"));
+				else
+					json.put("idCatalog", new String(""));
 
                                 /** In order to pass the context and the meta-metadata identifier **/
                                 if (doc.get("lom.educational.context.value") != null)
@@ -141,11 +146,11 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
                                 else
                                         json.put("format", new String(""));
 
-                                /** 18/11/12 NE: dataPovider **/
+                                /** 15/01/13 NE: dataPovider --> ODS: metaCatalog  **/
                                 if (doc.get("lom.metametadata.identifier.catalog") != null)
-                                        json.put("dataProvider", doc.get("lom.metametadata.identifier.catalog"));
+                                        json.put("metaIdCatalog", doc.get("lom.metametadata.identifier.catalog"));
                                 else
-                                        json.put("dataProvider", new String(""));
+                                        json.put("metaIdCatalog", new String(""));
 
                             /** 18/11/12 NE: Added in order to pass thumbnail URI, **/
                                 if (doc.get("lom.technical.duration") != null)
@@ -158,6 +163,13 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
                                         json.put("licenses", "http://creativecommons.org/licenses/"+doc.get("lom.rights.copyrightandotherrestrictions.string")+"/3.0/");
                                 else
                                         json.put("licenses", new String(""));
+                             
+                              /** 15/01/13 NE: Added in order to pass license URI, **/
+                             if (doc.get("collection") != null)
+                                        json.put("collection", doc.get("collection"));
+                                else
+                                        json.put("collection", new String(""));
+                             
 
 			} catch (JSONException ex) {
 				log.error(ex);
