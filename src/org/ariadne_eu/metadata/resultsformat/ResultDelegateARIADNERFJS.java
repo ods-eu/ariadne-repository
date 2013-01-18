@@ -175,6 +175,11 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
                                 else
                                         json.put("key", new String(""));
                              
+                             if (doc.get("md") != null)
+                                        json.put("md", doc.get("md"));
+                                else
+                                        json.put("md", new String(""));
+                             
 
 			} catch (JSONException ex) {
 				log.error(ex);
