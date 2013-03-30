@@ -58,7 +58,8 @@ public class Vsql_LuceneHandler extends Translate {
                 if (i == 0)
                 	lquery += term ;
                 else
-                	lquery += " AND " + term;
+                	//lquery += " AND " + term;
+                    lquery += " OR " + term;
             }
             log.debug("vsqlToLucene:translated \"" + query + "\" to \"" + lquery + "\"");
 
